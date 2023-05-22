@@ -80,8 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				892677D32A17B82E000E18D4 /* Reciplease */,
-				892677EA2A17B82F000E18D4 /* RecipleaseTests */,
-				892677F42A17B82F000E18D4 /* RecipleaseUITests */,
+				892678082A17B8BD000E18D4 /* Tests */,
 				892677D22A17B82E000E18D4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,13 +98,10 @@
 		892677D32A17B82E000E18D4 /* Reciplease */ = {
 			isa = PBXGroup;
 			children = (
-				892677D42A17B82E000E18D4 /* AppDelegate.swift */,
-				892677D62A17B82E000E18D4 /* SceneDelegate.swift */,
-				892677D82A17B82E000E18D4 /* ViewController.swift */,
-				892677DA2A17B82E000E18D4 /* Main.storyboard */,
-				892677DD2A17B82E000E18D4 /* Assets.xcassets */,
-				892677DF2A17B82E000E18D4 /* LaunchScreen.storyboard */,
-				892677E22A17B82E000E18D4 /* Info.plist */,
+				892678052A17B88E000E18D4 /* Model */,
+				892678062A17B893000E18D4 /* View */,
+				892678072A17B898000E18D4 /* Controller */,
+				892678042A17B83D000E18D4 /* Supporting Files */,
 			);
 			path = Reciplease;
 			sourceTree = "<group>";
@@ -125,6 +121,50 @@
 				892677F72A17B82F000E18D4 /* RecipleaseUITestsLaunchTests.swift */,
 			);
 			path = RecipleaseUITests;
+			sourceTree = "<group>";
+		};
+		892678042A17B83D000E18D4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				892677D42A17B82E000E18D4 /* AppDelegate.swift */,
+				892677D62A17B82E000E18D4 /* SceneDelegate.swift */,
+				892677DD2A17B82E000E18D4 /* Assets.xcassets */,
+				892677E22A17B82E000E18D4 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		892678052A17B88E000E18D4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		892678062A17B893000E18D4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				892677DA2A17B82E000E18D4 /* Main.storyboard */,
+				892677DF2A17B82E000E18D4 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		892678072A17B898000E18D4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				892677D82A17B82E000E18D4 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		892678082A17B8BD000E18D4 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				892677F42A17B82F000E18D4 /* RecipleaseUITests */,
+				892677EA2A17B82F000E18D4 /* RecipleaseTests */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -439,7 +479,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7366265M49;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Reciplease/Info.plist;
+				INFOPLIST_FILE = "Reciplease/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -467,7 +507,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7366265M49;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Reciplease/Info.plist;
+				INFOPLIST_FILE = "Reciplease/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
