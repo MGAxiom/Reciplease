@@ -22,12 +22,23 @@
                                     <constraint firstAttribute="width" constant="240" id="Aty-Up-Hm2"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reciplease" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wel-kK-u6v">
+                                <rect key="frame" x="69" y="189" width="255" height="92"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="55"/>
+                                <color key="textColor" red="0.9529411793" green="0.94509804249999996" blue="0.87843137979999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="shadowOffset" width="-3" height="4"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.82352948189999997" green="0.49803921579999999" blue="0.39607840779999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="agf-Iw-sDw" firstAttribute="top" secondItem="Wel-kK-u6v" secondAttribute="bottom" constant="25" id="2Di-Uj-qyN"/>
                             <constraint firstItem="agf-Iw-sDw" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="BDm-ke-wv2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Wel-kK-u6v" secondAttribute="trailing" constant="69" id="Pto-Ai-ZqI"/>
                             <constraint firstItem="agf-Iw-sDw" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="fO6-vs-r3z"/>
+                            <constraint firstItem="Wel-kK-u6v" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="69" id="u4r-bq-zzw"/>
                         </constraints>
                     </view>
                 </viewController>
