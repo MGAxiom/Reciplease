@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        RecipeSearchService().recipeAPI(userInput: "chicken")
+        RecipeSearchService.shared.recipeAPI(userInput: "chicken")
     }
 
 

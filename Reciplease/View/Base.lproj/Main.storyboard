@@ -49,7 +49,7 @@
                         <color key="backgroundColor" red="0.24313727020000001" green="0.25098040700000002" blue="0.34901961679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="30"/>
+                            <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <offsetWrapper key="textShadowOffset" horizontal="-4" vertical="4"/>
                         </textAttributes>
@@ -71,7 +71,7 @@
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="30"/>
+                            <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <offsetWrapper key="textShadowOffset" horizontal="-4" vertical="4"/>
                         </textAttributes>
@@ -87,7 +87,7 @@
         <!--FavouritesList-->
         <scene sceneID="VEu-uQ-yfT">
             <objects>
-                <viewController id="wnR-UY-og4" userLabel="FavouritesList" sceneMemberID="viewController">
+                <viewController id="wnR-UY-og4" userLabel="FavouritesList" customClass="FavouriteListVC" customModule="Reciplease" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i96-M6-lad">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -207,7 +207,7 @@
         <!--FavouritesDetail-->
         <scene sceneID="oSb-bW-oxc">
             <objects>
-                <viewController id="w4t-i4-o9v" userLabel="FavouritesDetail" sceneMemberID="viewController">
+                <viewController id="w4t-i4-o9v" userLabel="FavouritesDetail" customClass="FavouriteDetailVC" customModule="Reciplease" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zxO-HV-bck">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -320,12 +320,12 @@
         <!--RecipleaseMain-->
         <scene sceneID="MqR-oq-ujC">
             <objects>
-                <viewController id="P22-p2-F90" userLabel="RecipleaseMain" sceneMemberID="viewController">
+                <viewController id="P22-p2-F90" userLabel="RecipleaseMain" customClass="RecipleaseMainVC" customModule="Reciplease" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3EP-e6-fRW">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="v63-Oc-Ns3">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="v63-Oc-Ns3">
                                 <rect key="frame" x="0.0" y="231" width="393" height="429"/>
                                 <color key="backgroundColor" red="0.24313727020000001" green="0.25098040700000002" blue="0.34901961679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="PAe-M7-gmg">
@@ -344,6 +344,9 @@
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" title="Clear"/>
+                                            <connections>
+                                                <action selector="clearIngredientList:" destination="P22-p2-F90" eventType="touchUpInside" id="Ni3-TS-8OR"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" red="0.24313727020000001" green="0.25098040700000002" blue="0.34901961679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -358,11 +361,11 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ingredientCell" rowHeight="50" id="PuG-YN-PbC">
-                                        <rect key="frame" x="0.0" y="90" width="393" height="50"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ingredientCell" id="MON-Oh-lIv">
+                                        <rect key="frame" x="0.0" y="90" width="393" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PuG-YN-PbC" id="Lf5-Hd-21h">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MON-Oh-lIv" id="htL-R0-Y9y">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.24313727020000001" green="0.25098040700000002" blue="0.34901961679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -380,6 +383,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Search for recipes"/>
                                 <connections>
+                                    <action selector="searchButton:" destination="P22-p2-F90" eventType="touchUpInside" id="b2O-3P-1Lr"/>
                                     <segue destination="lln-7H-HDf" kind="show" id="TXt-pa-v63"/>
                                 </connections>
                             </button>
@@ -397,6 +401,9 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Add"/>
+                                        <connections>
+                                            <action selector="addIngredientButton:" destination="P22-p2-F90" eventType="touchUpInside" id="u6m-4x-QLS"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's in your fridge ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qCI-ge-0lt">
                                         <rect key="frame" x="110.66666666666669" y="5" width="172" height="29"/>
@@ -445,6 +452,10 @@
                     <navigationItem key="navigationItem" title="Reciplease" id="2mV-CE-cYD">
                         <barButtonItem key="backBarButtonItem" title="Back" id="lve-Pt-9WP"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="ingredientListTableView" destination="v63-Oc-Ns3" id="yFg-v1-sZc"/>
+                        <outlet property="ingredientTextfield" destination="dGW-CA-Lts" id="h0L-Uo-6SX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ks-MY-tcj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -453,7 +464,7 @@
         <!--RecipleaseList-->
         <scene sceneID="Oyl-YH-r27">
             <objects>
-                <viewController id="lln-7H-HDf" userLabel="RecipleaseList" sceneMemberID="viewController">
+                <viewController id="lln-7H-HDf" userLabel="RecipleaseList" customClass="RecipleaseListVC" customModule="Reciplease" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v7X-fD-g1B">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -577,7 +588,7 @@
         <!--RecipleaseDetails-->
         <scene sceneID="ejJ-fT-fmV">
             <objects>
-                <viewController id="Knf-sk-FOs" userLabel="RecipleaseDetails" sceneMemberID="viewController">
+                <viewController id="Knf-sk-FOs" userLabel="RecipleaseDetails" customClass="RecipleaseDetailVC" customModule="Reciplease" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RE6-rX-dCu">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

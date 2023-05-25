@@ -28,17 +28,17 @@ struct Recipe: Codable {
     let image: String
     let source: String
     let url: String
-    let shareAs: String
-    let yield: Int
+//    let shareAs: String
+//    let yield: Int
     let dietLabels, healthLabels, cautions, ingredientLines: [String]
     let ingredients: [Ingredient]
-    let calories, totalWeight: Double
+//    let calories, totalWeight: Double
     let totalTime: Int
-    let cuisineType: [String]
-    let mealType: [MealType]
-    let dishType: [DishType]
-    let totalNutrients, totalDaily: [String: Total]
-    let digest: [Digest]
+//    let cuisineType: [String]
+//    let mealType: [MealType]
+//    let dishType: [DishType]
+//    let totalNutrients, totalDaily: [String: Total]
+//    let digest: [Digest]
 }
 
 // MARK: - Digest
