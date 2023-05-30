@@ -11,10 +11,13 @@ class RecipleaseMainVC: UIViewController {
     
     let data = [""]
     var ingredientsList: [String] = []
+    var apiResult: RecipeSearchResult?
     
     @IBOutlet weak var ingredientTextfield: UITextField!
-    
     @IBOutlet weak var ingredientListTableView: UITableView!
+    
+    @IBOutlet weak var activityWheel: UIActivityIndicatorView!
+    @IBOutlet weak var searchButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +27,9 @@ class RecipleaseMainVC: UIViewController {
         ingredientsList = data
         ingredientsList.removeAll()
         
-        RecipeSearchService.shared.recipeAPI(userInput: "chicken")
+//        RecipeSearchService.shared.recipeAPI(userInput: "potato")
+        
+        
     }
     
     
@@ -44,9 +49,36 @@ class RecipleaseMainVC: UIViewController {
     
     
     @IBAction func searchButton(_ sender: UIButton) {
+        self.searchButton.isHidden = true
+        self.activityWheel.isHidden = false
+        fetchRecipes()
     }
     
-    func fetchRecipes() {}
+    func fetchRecipes() {
+        let listString: String = ingredientsList.joined(separator: ",")
+        print(listString)
+//        RecipeSearchService.shared.recipeAPI(userInput: listString) { apiData in
+//            self.apiResult = apiData
+//            print(self.apiResult)
+//        }
+        RecipeSearchService.shared.recipeAPI(userInput: listString) { response in
+            switch response {
+            case .success(let result):
+                self.apiResult = result
+                self.performSegue(withIdentifier: "showRecipeList", sender: self)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showRecipeList" {
+            let controller = segue.destination as! RecipleaseListVC
+            controller.data = apiResult
+        }
+    }
     
 }
 

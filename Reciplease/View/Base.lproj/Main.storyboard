@@ -384,7 +384,6 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Search for recipes"/>
                                 <connections>
                                     <action selector="searchButton:" destination="P22-p2-F90" eventType="touchUpInside" id="b2O-3P-1Lr"/>
-                                    <segue destination="lln-7H-HDf" kind="show" id="TXt-pa-v63"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LX2-WF-Ie7">
@@ -425,8 +424,9 @@
                                     <constraint firstItem="qCI-ge-0lt" firstAttribute="top" secondItem="LX2-WF-Ie7" secondAttribute="top" constant="5" id="tyh-qA-D1F"/>
                                 </constraints>
                             </view>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="cxe-eU-REH">
-                                <rect key="frame" x="186.66666666666666" y="681" width="20" height="49"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="cxe-eU-REH">
+                                <rect key="frame" x="178" y="681" width="37" height="49"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1kI-bW-IbJ"/>
@@ -453,8 +453,11 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="lve-Pt-9WP"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityWheel" destination="cxe-eU-REH" id="xqf-4r-XC8"/>
                         <outlet property="ingredientListTableView" destination="v63-Oc-Ns3" id="yFg-v1-sZc"/>
                         <outlet property="ingredientTextfield" destination="dGW-CA-Lts" id="h0L-Uo-6SX"/>
+                        <outlet property="searchButton" destination="UBi-H7-wSN" id="hFY-Ws-PTv"/>
+                        <segue destination="lln-7H-HDf" kind="show" identifier="showRecipeList" id="SPD-PX-iNB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ks-MY-tcj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -473,18 +476,18 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" red="0.24313727020000001" green="0.25098040700000002" blue="0.34901961679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recipeCell" rowHeight="110" id="1FS-uc-yzM">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="110"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recipeCell" rowHeight="150" id="1FS-uc-yzM" customClass="RecipesListTableViewCell" customModule="Reciplease" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1FS-uc-yzM" id="Tde-mk-QAm">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="110"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X1w-OI-6el">
-                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="110"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="150"/>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="CIw-To-xMW">
-                                                    <rect key="frame" x="15" y="54.333333333333343" width="87.333333333333329" height="45.666666666666657"/>
+                                                    <rect key="frame" x="15" y="94.333333333333329" width="87.333333333333329" height="45.666666666666671"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s86-tS-8uZ">
                                                             <rect key="frame" x="0.0" y="0.0" width="37" height="25.333333333333332"/>
@@ -492,7 +495,7 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fsx-s1-9q4">
-                                                            <rect key="frame" x="0.0" y="25.333333333333336" width="87.333333333333329" height="20.333333333333336"/>
+                                                            <rect key="frame" x="0.0" y="25.333333333333343" width="87.333333333333329" height="20.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.92845708130000004" green="0.92845708130000004" blue="0.92845714089999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -562,10 +565,19 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="cellImageVIew" destination="X1w-OI-6el" id="CdS-hy-jIN"/>
+                                            <outlet property="descriptionLabel" destination="Fsx-s1-9q4" id="ZWi-uo-ugf"/>
+                                            <outlet property="likesLabel" destination="Cd2-oY-mRW" id="RuA-QE-B0D"/>
+                                            <outlet property="timeLabel" destination="PsO-Zc-XQi" id="WzA-GV-2WC"/>
+                                            <outlet property="titleLabel" destination="s86-tS-8uZ" id="M9S-0h-Pfz"/>
                                             <segue destination="Knf-sk-FOs" kind="show" trigger="accessoryAction" id="h8p-Zk-sCZ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="lln-7H-HDf" id="96R-fI-uns"/>
+                                    <outlet property="delegate" destination="lln-7H-HDf" id="7c7-Ez-8eq"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="otJ-Iv-X2h"/>
@@ -580,6 +592,9 @@
                     <navigationItem key="navigationItem" title="Reciplease" id="mf2-Aq-za2">
                         <barButtonItem key="backBarButtonItem" title="Back" id="bZ6-Ul-xgW"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="recipeListTV" destination="qdp-c4-IaR" id="bE7-da-xZA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="twb-EG-JS4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

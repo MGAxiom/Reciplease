@@ -5,14 +5,16 @@
 //  Created by Maxime Girard on 24/05/2023.
 //
 
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
+//
+//   let recipeSearchResult = try? JSONDecoder().decode(RecipeSearchResult.self, from: jsonData)
+
 import Foundation
 
 // MARK: - RecipeSearchResult
 struct RecipeSearchResult: Codable {
     let q: String
-    let from, to: Int
-    let more: Bool
-    let count: Int
     let hits: [Hit]
 }
 
@@ -23,32 +25,36 @@ struct Hit: Codable {
 
 // MARK: - Recipe
 struct Recipe: Codable {
-    let uri: String
-    let label: String
-    let image: String
-    let source: String
-    let url: String
-//    let shareAs: String
-//    let yield: Int
-    let dietLabels, healthLabels, cautions, ingredientLines: [String]
-    let ingredients: [Ingredient]
-//    let calories, totalWeight: Double
-    let totalTime: Int
-//    let cuisineType: [String]
-//    let mealType: [MealType]
-//    let dishType: [DishType]
-//    let totalNutrients, totalDaily: [String: Total]
-//    let digest: [Digest]
+    let uri: String?
+    let label: String?
+    let image: String?
+    let source: String?
+    let url: String?
+    let shareAs: String?
+    let yield: Int?
+    let dietLabels, healthLabels, cautions, ingredientLines: [String]?
+    let ingredients: [Ingredient]?
+    let calories, totalWeight, totalTime: Double?
+//    let mealType: [MealType]?
+//    let dishType: [String]?
+//    let totalNutrients, totalDaily: [String: Total]?
+//    let digest: [Digest]?
+}
+
+enum CuisineType: String, Codable {
+    case american = "american"
+    case kosher = "kosher"
+    case southAmerican = "south american"
 }
 
 // MARK: - Digest
 struct Digest: Codable {
-    let label, tag: String
+    let label, tag: String?
     let schemaOrgTag: SchemaOrgTag?
-    let total: Double
-    let hasRDI: Bool
-    let daily: Double
-    let unit: Unit
+    let total: Double?
+    let hasRDI: Bool?
+    let daily: Double?
+    let unit: Unit?
     let sub: [Digest]?
 }
 
@@ -72,19 +78,14 @@ enum Unit: String, Codable {
     case µg = "µg"
 }
 
-enum DishType: String, Codable {
-    case mainCourse = "main course"
-    case starter = "starter"
-}
-
 // MARK: - Ingredient
 struct Ingredient: Codable {
-    let text: String
-    let quantity: Double
+    let text: String?
+    let quantity: Double?
     let measure: String?
-    let food: String
-    let weight: Double
-    let foodCategory, foodID: String
+    let food: String?
+    let weight: Double?
+    let foodCategory, foodID: String?
     let image: String?
     
     enum CodingKeys: String, CodingKey {
@@ -95,15 +96,14 @@ struct Ingredient: Codable {
 }
 
 enum MealType: String, Codable {
-    case brunch = "brunch"
+    case breakfast = "breakfast"
     case lunchDinner = "lunch/dinner"
+    case snack = "snack"
 }
 
 // MARK: - Total
 struct Total: Codable {
-    let label: String
-    let quantity: Double
-    let unit: Unit
+    let label: String?
+    let quantity: Double?
+    let unit: Unit?
 }
-import Foundation
-
