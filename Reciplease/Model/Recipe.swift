@@ -16,6 +16,7 @@ import Foundation
 struct RecipeSearchResult: Codable {
     let q: String
     let hits: [Hit]
+    let count: Int
 }
 
 // MARK: - Hit

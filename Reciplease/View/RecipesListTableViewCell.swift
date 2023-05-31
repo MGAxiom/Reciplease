@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class RecipesListTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var cellImageVIew: UIImageView!
+    @IBOutlet weak var cellImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var likesLabel: UILabel!
@@ -20,9 +21,12 @@ class RecipesListTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    func configure( title: String, subtitle: String, likes: String, time: String) {
+    func configure(imageURL: String, title: String, subtitle: String, likes: String, time: String) {
     
-//        cellImageVIew.image = UIImage(named: icon)
+//        cellImageView.image = UIImage(named: icon)
+        let url = URL(string: imageURL)!
+//        let filter = AspectScaledToFitSizeFilter(size: cellImageView.frame.size)
+        cellImageView.af.setImage(withURL: url)
         
         titleLabel.text = title
         
