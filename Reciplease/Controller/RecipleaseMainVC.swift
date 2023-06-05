@@ -28,11 +28,13 @@ class RecipleaseMainVC: UIViewController {
         ingredientsList.removeAll()
         
 //        RecipeSearchService.shared.recipeAPI(userInput: "potato")
-        
-        
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.searchButton.isHidden = false
+        self.activityWheel.isHidden = true
+    }
     
     @IBAction func addIngredientButton(_ sender: UIButton) {
         let ingredient = ingredientTextfield.text
