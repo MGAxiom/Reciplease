@@ -56,14 +56,10 @@ extension RecipleaseListVC: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as? RecipesListTableViewCell else {
             return UITableViewCell()
         }
-        
-        
         let recipe = recipes[indexPath.row]
-        
         let ingredientLinesString = recipe.decodedIngredientLines.joined(separator: ", ")
         
         cell.configure(imageURL: recipe.image! ,title: recipe.label!, subtitle: ingredientLinesString.capitalized, calories: recipe.roundedCalories, time: recipe.decodedTime)
-
         return cell
     }
     

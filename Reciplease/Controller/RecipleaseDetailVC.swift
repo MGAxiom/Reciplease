@@ -11,7 +11,7 @@ import AlamofireImage
 class RecipleaseDetailVC: UIViewController {
     
     var data: RecipeDecodable?
-    
+    private let repository = RecipeRepository()
     
     @IBOutlet weak var recipePlaceholder: UIImageView!
     @IBOutlet weak var titleRecipe: UILabel!
@@ -32,8 +32,10 @@ class RecipleaseDetailVC: UIViewController {
     }
     
     @IBAction func favoriteButton(_ sender: Any) {
-        let ingredientLinesString = data?.ingredientLines!.joined(separator: ", ")
-        saveRecipe(title: (data?.label)!, calories: data!.roundedCalories, time: data!.decodedTime, imageUrl: (data?.image)!, ingredients: ingredientLinesString!, url: (data?.url)!)
+        addRecipe()
+//        UIButton.image = UIImage(systemName: "star.filled")
+//        let ingredientLinesString = data?.ingredientLines!.joined(separator: ", ")
+//        saveRecipe(title: (data?.label)!, calories: data!.roundedCalories, time: data!.decodedTime, imageUrl: (data?.image)!, ingredients: ingredientLinesString!, url: (data?.url)!)
     }
     
     func transferDetails() {
@@ -56,21 +58,27 @@ class RecipleaseDetailVC: UIViewController {
         timeLabel.text = data?.decodedTime
     }
     
-    
-    private func saveRecipe(title: String, calories: String, time: String, imageUrl: String, ingredients: String, url: String) {
-        let recipe = Recipe(context: CoreDataStack.sharedInstance.viewContext)
-        recipe.title = title
-        recipe.calories = calories
-        recipe.time = time
-        recipe.imageUrl = imageUrl
-        recipe.ingredients = ingredients
-        recipe.url = url
-        do {
-            try CoreDataStack.sharedInstance.viewContext.save()
-        } catch {
-            print("Error while trying to save recipe")
-        }
+    private func addRecipe() {
+        let ingredientLinesString = (data?.ingredientLines!.joined(separator: ", "))!
+        repository.saveRecipe(title: (data?.label)!, calories: data!.roundedCalories, time: data!.decodedTime, imageUrl: (data?.image)!, ingredients: ingredientLinesString, url: (data?.url)!)
     }
+    
+    
+//    private func saveRecipe(title: String, calories: String, time: String, imageUrl: String, ingredients: String, url: String) {
+//        let recipe = Recipe(context: CoreDataStack.sharedInstance.viewContext)
+//        recipe.title = title
+//        recipe.calories = calories
+//        recipe.time = time
+//        recipe.imageUrl = imageUrl
+//        recipe.ingredients = ingredients
+//        recipe.url = url
+//        do {
+//            try CoreDataStack.sharedInstance.viewContext.save()
+//            print("Recipe has been saved.")
+//        } catch {
+//            print("Error while trying to save recipe")
+//        }
+//    }
 }
 
 extension RecipleaseDetailVC: UITableViewDelegate, UITableViewDataSource {

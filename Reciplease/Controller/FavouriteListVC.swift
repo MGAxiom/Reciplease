@@ -10,20 +10,35 @@ import CoreData
 
 class FavouriteListVC: UIViewController {
     
-    var data: [Recipe] = [Recipe]()
+    var favouriteData = [Recipe]()
+    private let repository = RecipeRepository()
+//    var favouriteDetailsToSend = Recipe]()
     
     @IBOutlet weak var favouriteListTV: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let request: NSFetchRequest<Recipe> = Recipe.fetchRequest()
-        guard let recipe = try? CoreDataStack.sharedInstance.viewContext.fetch(request) else { return }
+        fetchRecipe()
+        favouriteListTV.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchRecipe()
+    }
+    
+    private func fetchRecipe() {
+        repository.getRecipe(completion: { [weak self] data in
+            self?.favouriteData = data
+            self?.favouriteListTV.reloadData()
+            print(self!.favouriteData)
+        })
     }
 }
 
 extension FavouriteListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return favouriteData.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -31,29 +46,30 @@ extension FavouriteListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as? RecipesListTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "favouriteRecipeCell", for: indexPath) as? FavouriteListTableViewCell else {
             return UITableViewCell()
         }
         
         
-        let recipe = recipes[indexPath.row]
         
-        let ingredientLinesString = recipe.decodedIngredientLines.joined(separator: ", ")
+        let recipe = favouriteData[indexPath.row]
         
-        cell.configure(imageURL: recipe.image! ,title: recipe.label!, subtitle: ingredientLinesString.capitalized, calories: recipe.roundedCalories, time: recipe.decodedTime)
+//        let ingredientLinesString = recipe.ingredients.joined(separator: ", ")
         
+        cell.configure(imageURL: recipe.imageUrl!,title: recipe.title!, subtitle: recipe.ingredients!.capitalized, calories: recipe.calories!, time: recipe.time!)
+        print(cell.cellImageView.frame)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        detailsToSend = recipes[indexPath.row]
+        let favouriteDetailsToSend = favouriteData[indexPath.row]
         self.performSegue(withIdentifier: "showRecipeDetails", sender: self)
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showRecipeDetails" {
-            let controller = segue.destination as! RecipleaseDetailVC
-            controller.data = detailsToSend
+            let controller = segue.destination as! FavouriteDetailVC
+            controller.data = favouriteData
         }
-        }
+    }
+}

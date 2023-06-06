@@ -9,6 +9,7 @@ import UIKit
 
 class FavouriteDetailVC: UIViewController {
     
+    var data = [Recipe]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
