@@ -12,7 +12,7 @@ class FavouriteListVC: UIViewController {
     
     var favouriteData = [Recipe]()
     private let repository = RecipeRepository()
-//    var favouriteDetailsToSend = Recipe]()
+    var favouriteDetailsToSend = Recipe()
     
     @IBOutlet weak var favouriteListTV: UITableView!
     
@@ -49,27 +49,20 @@ extension FavouriteListVC: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "favouriteRecipeCell", for: indexPath) as? FavouriteListTableViewCell else {
             return UITableViewCell()
         }
-        
-        
-        
         let recipe = favouriteData[indexPath.row]
-        
-//        let ingredientLinesString = recipe.ingredients.joined(separator: ", ")
-        
-        cell.configure(imageURL: recipe.imageUrl!,title: recipe.title!, subtitle: recipe.ingredients!.capitalized, calories: recipe.calories!, time: recipe.time!)
-        print(cell.cellImageView.frame)
+        cell.configure(imageURL: recipe.imageUrl!,title: recipe.title!, subtitle: recipe.ingredients?.capitalized ?? "", calories: recipe.calories!, time: recipe.time!)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let favouriteDetailsToSend = favouriteData[indexPath.row]
-        self.performSegue(withIdentifier: "showRecipeDetails", sender: self)
+        self.performSegue(withIdentifier: "showFavouritesDetails", sender: self)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showRecipeDetails" {
+        if segue.identifier == "showFavouritesDetails" {
             let controller = segue.destination as! FavouriteDetailVC
-            controller.data = favouriteData
+            controller.data = favouriteDetailsToSend
         }
     }
 }

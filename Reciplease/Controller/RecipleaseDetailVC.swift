@@ -93,7 +93,5 @@ extension RecipleaseDetailVC: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.font = UIFont(name: "Noteworthy Bold", size: 15)
         cell.textLabel?.textColor = #colorLiteral(red: 0.9546958804, green: 0.9447646141, blue: 0.8713437915, alpha: 1)
         return cell
-    }
-    
-    
+    } 
 }
