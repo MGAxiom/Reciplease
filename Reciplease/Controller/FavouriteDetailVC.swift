@@ -9,7 +9,7 @@ import UIKit
 
 class FavouriteDetailVC: UIViewController {
     
-    var data = Recipe()
+    var data: Recipe?
     
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var recipeTitle: UILabel!
@@ -19,12 +19,12 @@ class FavouriteDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        transferDetails()
         
     }
     
     @IBAction func getInstructionsButton(_ sender: UIButton) {
-        if let url = URL(string: data.url ?? "") {
+        if let url = URL(string: data?.url ?? "") {
             UIApplication.shared.open(url)
         }
     }
@@ -33,7 +33,7 @@ class FavouriteDetailVC: UIViewController {
     }
     
     func transferDetails() {
-        let url = URL(string: data.imageUrl ?? "")!
+        let url = URL(string: data?.imageUrl ?? "")!
         
         recipeImage.af.setImage(withURL: url)
         let gradient = CAGradientLayer()
@@ -47,24 +47,24 @@ class FavouriteDetailVC: UIViewController {
         recipeImage.layer.insertSublayer(gradient, at: 1)
         
         
-        recipeTitle.text = data.title
-        caloriesLabel.text = data.calories
-        timeLabel.text = data.time
+        recipeTitle.text = data?.title
+        caloriesLabel.text = data?.calories
+        timeLabel.text = data?.time
     }
 }
 extension FavouriteDetailVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let string = data.ingredients
-        let ingredientArray = string?.components(separatedBy: ",")
-        return ingredientArray?.count ?? 0
+        let string = data?.ingredients ?? ""
+        let ingredientArray = string.components(separatedBy: ",")
+        return ingredientArray.count 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeIngredientsCell", for: indexPath)
-        let string = data.ingredients
-        let ingredientArray = string?.components(separatedBy: ",")
+        let string = data?.ingredients ?? ""
+        let ingredientArray = string.components(separatedBy: ",")
         cell.textLabel?.numberOfLines = 5
-        cell.textLabel?.text = " - \(ingredientArray?[indexPath.row].capitalized ?? "")"
+        cell.textLabel?.text = " - \(ingredientArray[indexPath.row].capitalized )"
         cell.textLabel?.font = UIFont(name: "Noteworthy Bold", size: 15)
         cell.textLabel?.textColor = #colorLiteral(red: 0.9546958804, green: 0.9447646141, blue: 0.8713437915, alpha: 1)
         return cell

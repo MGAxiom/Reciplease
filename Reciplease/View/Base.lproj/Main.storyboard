@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -53,6 +52,9 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <offsetWrapper key="textShadowOffset" horizontal="-4" vertical="4"/>
                         </textAttributes>
+                        <navigationBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" red="0.24313727020000001" green="0.25098040700000002" blue="0.34901961679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </navigationBarAppearance>
                     </navigationBar>
                     <connections>
                         <segue destination="P22-p2-F90" kind="relationship" relationship="rootViewController" id="YN4-W6-c37"/>
@@ -75,6 +77,9 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <offsetWrapper key="textShadowOffset" horizontal="-4" vertical="4"/>
                         </textAttributes>
+                        <navigationBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" red="0.24313727020000001" green="0.25098040700000002" blue="0.34901961679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </navigationBarAppearance>
                     </navigationBar>
                     <connections>
                         <segue destination="wnR-UY-og4" kind="relationship" relationship="rootViewController" id="m9I-qB-iPm"/>
@@ -96,7 +101,7 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" red="0.24313727020000001" green="0.25098040700000002" blue="0.34901961679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="favouriteRecipeCell" rowHeight="155" id="3Be-4c-uqO" customClass="FavouriteListTableViewCell" customModule="Reciplease" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="favouriteRecipeCell" id="3Be-4c-uqO" customClass="FavouriteListTableViewCell" customModule="Reciplease" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="155"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Be-4c-uqO" id="8lk-C4-Yad">
@@ -204,13 +209,23 @@
                                     <outlet property="delegate" destination="wnR-UY-og4" id="hJ0-cP-uS7"/>
                                 </connections>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To add recipes as favourites, you only need to tap the star icon on the right top side of the screen !" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bwz-g3-ebc">
+                                <rect key="frame" x="30" y="378" width="333" height="96"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
+                                <color key="textColor" red="0.9529411793" green="0.94509804249999996" blue="0.87843137979999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sg9-ZI-vOJ"/>
                         <color key="backgroundColor" red="0.24313727020000001" green="0.25098040700000002" blue="0.34901961679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="uK4-68-KOR" firstAttribute="top" secondItem="sg9-ZI-vOJ" secondAttribute="top" id="00R-by-8Db"/>
+                            <constraint firstItem="Bwz-g3-ebc" firstAttribute="centerX" secondItem="i96-M6-lad" secondAttribute="centerX" id="0jY-tx-nMG"/>
+                            <constraint firstItem="Bwz-g3-ebc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="i96-M6-lad" secondAttribute="leading" id="biP-zn-fWP"/>
                             <constraint firstItem="uK4-68-KOR" firstAttribute="trailing" secondItem="sg9-ZI-vOJ" secondAttribute="trailing" id="dT6-4N-AQC"/>
+                            <constraint firstAttribute="trailing" secondItem="Bwz-g3-ebc" secondAttribute="trailing" constant="30" id="pLC-dG-dlF"/>
                             <constraint firstItem="uK4-68-KOR" firstAttribute="bottom" secondItem="sg9-ZI-vOJ" secondAttribute="bottom" id="tRD-zy-A9u"/>
+                            <constraint firstItem="Bwz-g3-ebc" firstAttribute="centerY" secondItem="i96-M6-lad" secondAttribute="centerY" id="uIZ-AG-4XN"/>
                             <constraint firstItem="uK4-68-KOR" firstAttribute="leading" secondItem="sg9-ZI-vOJ" secondAttribute="leading" id="xTw-c7-FZX"/>
                         </constraints>
                     </view>
@@ -218,6 +233,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="r9W-zt-ZfP"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="favouriteDescription" destination="Bwz-g3-ebc" id="eDS-8d-w2B"/>
                         <outlet property="favouriteListTV" destination="uK4-68-KOR" id="LDD-rz-wOj"/>
                         <segue destination="w4t-i4-o9v" kind="show" identifier="showFavouritesDetails" id="K7C-m7-IiG"/>
                     </connections>
@@ -242,7 +258,7 @@
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KCh-QU-Stb">
                                 <rect key="frame" x="0.0" y="416" width="393" height="289"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.24313727020000001" green="0.25098040700000002" blue="0.34901961679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recipeIngredientsCell" id="i3s-w1-n43">
                                         <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
@@ -251,6 +267,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.24313727020000001" green="0.25098040700000002" blue="0.34901961679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -366,7 +383,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="caloriesLabel" destination="pZr-i3-Tgd" id="A1D-uX-yWP"/>
-                        <outlet property="ingredientsForRecipeTV" destination="KCh-QU-Stb" id="Wiz-eo-b7O"/>
+                        <outlet property="ingredientsForRecipeTV" destination="KCh-QU-Stb" id="buZ-5M-lZM"/>
                         <outlet property="recipeImage" destination="Ckl-X1-zSB" id="wI6-aY-su3"/>
                         <outlet property="recipeTitle" destination="4iH-wd-hbC" id="cyJ-1Z-haI"/>
                         <outlet property="timeLabel" destination="mKV-om-x2c" id="clK-tF-N6f"/>
@@ -384,7 +401,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="v63-Oc-Ns3">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="v63-Oc-Ns3">
                                 <rect key="frame" x="0.0" y="285" width="393" height="374"/>
                                 <color key="backgroundColor" red="0.24313727020000001" green="0.25098040700000002" blue="0.34901961679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
@@ -638,9 +655,15 @@
                         <viewLayoutGuide key="safeArea" id="otJ-Iv-X2h"/>
                         <color key="backgroundColor" red="0.24313727020000001" green="0.25098040700000002" blue="0.34901961679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="qdp-c4-IaR" firstAttribute="trailing" secondItem="otJ-Iv-X2h" secondAttribute="trailing" id="AZr-ig-VkL"/>
+                            <constraint firstItem="qdp-c4-IaR" firstAttribute="top" secondItem="otJ-Iv-X2h" secondAttribute="top" id="2no-xE-cmN"/>
+                            <constraint firstItem="qdp-c4-IaR" firstAttribute="trailing" secondItem="otJ-Iv-X2h" secondAttribute="trailing" id="50u-8z-8jJ"/>
+                            <constraint firstItem="qdp-c4-IaR" firstAttribute="bottom" secondItem="otJ-Iv-X2h" secondAttribute="bottom" id="7AK-9a-AfS"/>
+                            <constraint firstItem="qdp-c4-IaR" firstAttribute="top" secondItem="otJ-Iv-X2h" secondAttribute="top" id="I2J-Ax-Lkg"/>
+                            <constraint firstItem="qdp-c4-IaR" firstAttribute="bottom" secondItem="otJ-Iv-X2h" secondAttribute="bottom" id="auh-UR-rSR"/>
+                            <constraint firstItem="qdp-c4-IaR" firstAttribute="bottom" secondItem="otJ-Iv-X2h" secondAttribute="bottom" id="hwf-Vf-YCH"/>
                             <constraint firstItem="qdp-c4-IaR" firstAttribute="bottom" secondItem="otJ-Iv-X2h" secondAttribute="bottom" id="pZs-xd-JIl"/>
                             <constraint firstItem="qdp-c4-IaR" firstAttribute="leading" secondItem="otJ-Iv-X2h" secondAttribute="leading" id="rAX-To-3Yx"/>
+                            <constraint firstItem="qdp-c4-IaR" firstAttribute="top" secondItem="otJ-Iv-X2h" secondAttribute="top" id="sBJ-FK-J8K"/>
                             <constraint firstItem="qdp-c4-IaR" firstAttribute="top" secondItem="otJ-Iv-X2h" secondAttribute="top" id="ukr-Df-dpk"/>
                         </constraints>
                     </view>
@@ -802,6 +825,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="caloriesLabel" destination="gjU-sA-1KY" id="YGM-u1-n6T"/>
+                        <outlet property="favoriteButton" destination="CEc-G5-U2t" id="olD-HY-PyK"/>
                         <outlet property="ingredientsOfRecipeTV" destination="lGm-jv-Dou" id="i2F-1N-taj"/>
                         <outlet property="recipePlaceholder" destination="bKB-jM-Q3g" id="O2o-R1-yAZ"/>
                         <outlet property="timeLabel" destination="bs6-2b-glo" id="E3z-zS-0Qh"/>
@@ -819,8 +843,5 @@
         <image name="scalemass" catalog="system" width="128" height="121"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

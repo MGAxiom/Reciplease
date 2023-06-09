@@ -12,6 +12,7 @@ class RecipleaseDetailVC: UIViewController {
     
     var data: RecipeDecodable?
     private let repository = RecipeRepository()
+    let database = Recipe()
     
     @IBOutlet weak var recipePlaceholder: UIImageView!
     @IBOutlet weak var titleRecipe: UILabel!
@@ -19,10 +20,17 @@ class RecipleaseDetailVC: UIViewController {
     @IBOutlet weak var ingredientsOfRecipeTV: UITableView!
     @IBOutlet weak var caloriesLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var favoriteButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         transferDetails()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        checkNavIcon()
     }
     
     @IBAction func getInstructionsButton(_ sender: UIButton) {
@@ -32,10 +40,13 @@ class RecipleaseDetailVC: UIViewController {
     }
     
     @IBAction func favoriteButton(_ sender: Any) {
-        addRecipe()
-//        UIButton.image = UIImage(systemName: "star.filled")
-//        let ingredientLinesString = data?.ingredientLines!.joined(separator: ", ")
-//        saveRecipe(title: (data?.label)!, calories: data!.roundedCalories, time: data!.decodedTime, imageUrl: (data?.image)!, ingredients: ingredientLinesString!, url: (data?.url)!)
+        if repository.checkIfItemExist(id: titleRecipe.text!) == true {
+            presentAlertVC(with: "This recipe is already in your favourites. Do you want to remove it?", recipeName: titleRecipe.text!)
+            checkNavIcon()
+        } else {
+            addRecipe()
+            checkNavIcon()
+        }
     }
     
     func transferDetails() {
@@ -63,22 +74,25 @@ class RecipleaseDetailVC: UIViewController {
         repository.saveRecipe(title: (data?.label)!, calories: data!.roundedCalories, time: data!.decodedTime, imageUrl: (data?.image)!, ingredients: ingredientLinesString, url: (data?.url)!)
     }
     
+    func checkNavIcon() {
+        if repository.checkIfItemExist(id: titleRecipe.text!) == true {
+            favoriteButton.image = Image(systemName: "star.fill")
+        } else {
+            favoriteButton.image = Image(systemName: "star")
+        }
+    }
     
-//    private func saveRecipe(title: String, calories: String, time: String, imageUrl: String, ingredients: String, url: String) {
-//        let recipe = Recipe(context: CoreDataStack.sharedInstance.viewContext)
-//        recipe.title = title
-//        recipe.calories = calories
-//        recipe.time = time
-//        recipe.imageUrl = imageUrl
-//        recipe.ingredients = ingredients
-//        recipe.url = url
-//        do {
-//            try CoreDataStack.sharedInstance.viewContext.save()
-//            print("Recipe has been saved.")
-//        } catch {
-//            print("Error while trying to save recipe")
-//        }
-//    }
+    func presentAlertVC(with messsage: String, recipeName: String) {
+        let alert = UIAlertController(title: "Oops !", message: messsage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "No", style: .default))
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { [self] action in
+            RecipeRepository().deleteRecipe(id: recipeName)
+            checkNavIcon()
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
 }
 
 extension RecipleaseDetailVC: UITableViewDelegate, UITableViewDataSource {
@@ -93,5 +107,5 @@ extension RecipleaseDetailVC: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.font = UIFont(name: "Noteworthy Bold", size: 15)
         cell.textLabel?.textColor = #colorLiteral(red: 0.9546958804, green: 0.9447646141, blue: 0.8713437915, alpha: 1)
         return cell
-    } 
+    }
 }

@@ -30,6 +30,7 @@
 		89D141492A2E3BFE0078BAF1 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D141482A2E3BFE0078BAF1 /* Recipe.swift */; };
 		89E71CCB2A2F74C100B39B07 /* RecipeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E71CCA2A2F74C100B39B07 /* RecipeRepository.swift */; };
 		89E71CCD2A2F990F00B39B07 /* FavouriteListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E71CCC2A2F990F00B39B07 /* FavouriteListTableViewCell.swift */; };
+		89E71CCF2A32068E00B39B07 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E71CCE2A32068E00B39B07 /* Extensions.swift */; };
 		F0ADD4A5D97E5305F89A3729 /* Pods_Reciplease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 131D66A908E1BD6F4E865E81 /* Pods_Reciplease.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,7 @@
 		89D141482A2E3BFE0078BAF1 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		89E71CCA2A2F74C100B39B07 /* RecipeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRepository.swift; sourceTree = "<group>"; };
 		89E71CCC2A2F990F00B39B07 /* FavouriteListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteListTableViewCell.swift; sourceTree = "<group>"; };
+		89E71CCE2A32068E00B39B07 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A446C8E42AF7C87AA713FCD6 /* Pods-Reciplease-RecipleaseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease-RecipleaseUITests.release.xcconfig"; path = "Target Support Files/Pods-Reciplease-RecipleaseUITests/Pods-Reciplease-RecipleaseUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CB9FAA04EF83367B19C18EF1 /* Pods_RecipleaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecipleaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD7DCF4ECC545EFA336A48CB /* Pods_Reciplease_RecipleaseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reciplease_RecipleaseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,6 +196,7 @@
 				892677D62A17B82E000E18D4 /* SceneDelegate.swift */,
 				892677DD2A17B82E000E18D4 /* Assets.xcassets */,
 				892677E22A17B82E000E18D4 /* Info.plist */,
+				89E71CCE2A32068E00B39B07 /* Extensions.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				89E71CCD2A2F990F00B39B07 /* FavouriteListTableViewCell.swift in Sources */,
 				89BC88B92A1E7AEB00B83FA6 /* FavouriteDetailVC.swift in Sources */,
 				89BC88B52A1E7AB600B83FA6 /* RecipleaseDetailVC.swift in Sources */,
+				89E71CCF2A32068E00B39B07 /* Extensions.swift in Sources */,
 				892677D52A17B82E000E18D4 /* AppDelegate.swift in Sources */,
 				89D141492A2E3BFE0078BAF1 /* Recipe.swift in Sources */,
 				892677D72A17B82E000E18D4 /* SceneDelegate.swift in Sources */,

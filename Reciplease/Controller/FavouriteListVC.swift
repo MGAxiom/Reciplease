@@ -11,24 +11,30 @@ import CoreData
 class FavouriteListVC: UIViewController {
     
     var favouriteData = [Recipe]()
-    private let repository = RecipeRepository()
-    var favouriteDetailsToSend = Recipe()
+    let repository = RecipeRepository()
+    var favouriteDetailsToSend: Recipe?
     
     @IBOutlet weak var favouriteListTV: UITableView!
+    @IBOutlet weak var favouriteDescription: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchRecipe()
+        fetchRecipes()
         favouriteListTV.reloadData()
+        if favouriteData.count == 0 {
+            favouriteDescription.isHidden = false
+            favouriteListTV.isHidden = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchRecipe()
+        fetchRecipes()
     }
     
-    private func fetchRecipe() {
-        repository.getRecipe(completion: { [weak self] data in
+    private func fetchRecipes() {
+        repository.getAllRecipes(completion: { [weak self] data in
             self?.favouriteData = data
             self?.favouriteListTV.reloadData()
             print(self!.favouriteData)
@@ -55,7 +61,7 @@ extension FavouriteListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let favouriteDetailsToSend = favouriteData[indexPath.row]
+        favouriteDetailsToSend = repository.getRecipeDetails(id: favouriteData[indexPath.row].title!)
         self.performSegue(withIdentifier: "showFavouritesDetails", sender: self)
     }
 
