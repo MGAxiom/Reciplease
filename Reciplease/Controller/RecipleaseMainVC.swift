@@ -58,7 +58,6 @@ class RecipleaseMainVC: UIViewController {
     
     func fetchRecipes() {
         let listString: String = ingredientsList.joined(separator: ",")
-        print(listString)
 
         RecipeSearchService.shared.recipeAPI(userInput: listString) { response in
             switch response {

@@ -33,6 +33,9 @@ class FavouriteListTableViewCell: UITableViewCell {
             UIColor.black.cgColor,
         ]
         //        let resizedImage =  cellImageView.image?.resizeUI(size: CGSize(width: 393, height: 155))
+        if cellImageView.layer.sublayers?.count ?? 0 >= 1 {
+            cellImageView.layer.sublayers?.removeFirst()
+        }
         cellImageView.layer.insertSublayer(gradient, at: 0)
         
         titleLabel.text = title

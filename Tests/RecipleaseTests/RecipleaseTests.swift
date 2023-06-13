@@ -6,31 +6,49 @@
 //
 
 import XCTest
+import CoreData
 @testable import Reciplease
 
 final class RecipleaseTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    // MARK: - Properties
+    
+    var coreDataStack: TestCoreDataStack!
+    var coreDataRepository: RecipeRepository!
+    
+    // MARK: - Test Life Cycle
+    
+    override func setUp() {
+        super.setUp()
+        coreDataStack = TestCoreDataStack(modelName: "Reciplease")
+        coreDataRepository = RecipeRepository(coreDataStack: coreDataStack)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    override func tearDown() {
+        super.tearDown()	
+        coreDataRepository = nil
+        coreDataStack = nil
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    
+    // MARK: - Tests
+    
+    func testAddRecipeMethods_WhenAnEntityIsCreated_ThenShouldBeCorrectlySaved() {
+        coreDataRepository.saveRecipe(title: "Infused butter", calories: "1000", time: "1h 30min", imageUrl: "https://www.edamam.com/web-img/recipeimage.jpg", ingredients: "butter", url: "http://www.eating.com/recipes/infused-butter-recipe.html", foods: "butter")
+        XCTAssertTrue(coreDataRepository.checkIfItemExist(id: "Infused butter") == true)
+        XCTAssertTrue(coreDataRepository.getRecipeDetails(id: "Infused butter")?.title == "Infused butter")
+        XCTAssertTrue(coreDataRepository.getRecipeDetails(id: "Infused butter")?.calories == "1000")
+        XCTAssertTrue(coreDataRepository.getRecipeDetails(id: "Infused butter")?.foods == "butter")
+        XCTAssertTrue(coreDataRepository.getRecipeDetails(id: "Infused butter")?.imageUrl == "https://www.edamam.com/web-img/recipeimage.jpg")
+        XCTAssertTrue(coreDataRepository.getRecipeDetails(id: "Infused butter")?.ingredients == "butter")
+        XCTAssertTrue(coreDataRepository.getRecipeDetails(id: "Infused butter")?.time == "1h 30min")
+        XCTAssertTrue(coreDataRepository.getRecipeDetails(id: "Infused butter")?.url == "http://www.eating.com/recipes/infused-butter-recipe.html")
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testFavouriteRecipesAreSaved_WhenAnEntityIsDeleted_ThenShouldBeCorrectlyDeleted() {
+        coreDataRepository.saveRecipe(title: "Infused butter", calories: "1000", time: "1h 30min", imageUrl: "https://www.edamam.com/web-img/recipeimage.jpg", ingredients: "butter", url: "http://www.eating.com/recipes/infused-butter-recipe.html", foods: "butter")
+        
+        coreDataRepository.deleteRecipe(id: "Infused butter")
+        XCTAssertTrue(coreDataRepository.checkIfItemExist(id: "Infused butter") == false)
     }
-
 }

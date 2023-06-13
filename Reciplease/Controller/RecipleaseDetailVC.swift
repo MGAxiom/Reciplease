@@ -12,7 +12,7 @@ class RecipleaseDetailVC: UIViewController {
     
     var data: RecipeDecodable?
     private let repository = RecipeRepository()
-    let database = Recipe()
+    let database = Recipe?.self
     
     @IBOutlet weak var recipePlaceholder: UIImageView!
     @IBOutlet weak var titleRecipe: UILabel!
@@ -71,7 +71,8 @@ class RecipleaseDetailVC: UIViewController {
     
     private func addRecipe() {
         let ingredientLinesString = (data?.ingredientLines!.joined(separator: ", "))!
-        repository.saveRecipe(title: (data?.label)!, calories: data!.roundedCalories, time: data!.decodedTime, imageUrl: (data?.image)!, ingredients: ingredientLinesString, url: (data?.url)!)
+        let foodLineString = (data?.decodedIngredientLines.joined(separator: ", "))!
+        repository.saveRecipe(title: (data?.label)!, calories: data!.roundedCalories, time: data!.decodedTime, imageUrl: (data?.image)!, ingredients: ingredientLinesString, url: (data?.url)!, foods: foodLineString)
     }
     
     func checkNavIcon() {

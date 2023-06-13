@@ -28,10 +28,8 @@ final class RecipeRepository {
         do {
             let recipes = try coreDataStack.viewContext.fetch(request)
             completion(recipes)
-            print("Data has been taken")
         } catch {
             completion([])
-            print("Uh oh it failed")
         }
     }
     
@@ -48,7 +46,7 @@ final class RecipeRepository {
         }
     }
         
-        func saveRecipe(title: String, calories: String, time: String, imageUrl: String, ingredients: String, url: String) {
+    func saveRecipe(title: String, calories: String, time: String, imageUrl: String, ingredients: String, url: String, foods: String) {
             let recipe = Recipe(context: coreDataStack.viewContext)
             recipe.title = title
             recipe.calories = calories
@@ -56,9 +54,10 @@ final class RecipeRepository {
             recipe.imageUrl = imageUrl
             recipe.ingredients = ingredients
             recipe.url = url
+            recipe.foods = foods
             do {
                 try coreDataStack.viewContext.save()
-                print("Recipe has been saved.")
+//                print("Recipe has been saved.")
             } catch {
                 print("Error while trying to save recipe")
             }
@@ -85,7 +84,6 @@ final class RecipeRepository {
             let fetchRequest: NSFetchRequest<Recipe> = Recipe.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "title == %@", id)
             let object = try! coreDataStack.viewContext.fetch(fetchRequest)
-            //        coreDataStack.viewContext.delete(object)
             for obj in object {
                 coreDataStack.viewContext.delete(obj)
             }

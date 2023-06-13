@@ -30,14 +30,13 @@ class FavouriteListVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchRecipes()
+//        fetchRecipes()
+        self.favouriteListTV.reloadData()
     }
     
     private func fetchRecipes() {
         repository.getAllRecipes(completion: { [weak self] data in
             self?.favouriteData = data
-            self?.favouriteListTV.reloadData()
-            print(self!.favouriteData)
         })
     }
 }
@@ -56,7 +55,8 @@ extension FavouriteListVC: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         let recipe = favouriteData[indexPath.row]
-        cell.configure(imageURL: recipe.imageUrl!,title: recipe.title!, subtitle: recipe.ingredients?.capitalized ?? "", calories: recipe.calories!, time: recipe.time!)
+        cell.configure(imageURL: recipe.imageUrl!,title: recipe.title!, subtitle: recipe.foods?.capitalized ?? "", calories: recipe.calories!, time: recipe.time!)
+        
         return cell
     }
     

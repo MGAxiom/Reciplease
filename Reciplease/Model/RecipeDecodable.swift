@@ -63,49 +63,7 @@ struct RecipeDecodable: Codable {
             cal?.round()
             return String(format: "%.0f", cal ?? 0.0)
     }
-//    let mealType: [MealType]?
-//    let dishType: [String]?
-//    let totalNutrients, totalDaily: [String: Total]?
-//    let digest: [Digest]?
 }
-
-enum CuisineType: String, Codable {
-    case american = "american"
-    case kosher = "kosher"
-    case southAmerican = "south american"
-}
-
-// MARK: - Digest
-struct Digest: Codable {
-    let label, tag: String?
-    let schemaOrgTag: SchemaOrgTag?
-    let total: Double?
-    let hasRDI: Bool?
-    let daily: Double?
-    let unit: Unit?
-    let sub: [Digest]?
-}
-
-enum SchemaOrgTag: String, Codable {
-    case carbohydrateContent = "carbohydrateContent"
-    case cholesterolContent = "cholesterolContent"
-    case fatContent = "fatContent"
-    case fiberContent = "fiberContent"
-    case proteinContent = "proteinContent"
-    case saturatedFatContent = "saturatedFatContent"
-    case sodiumContent = "sodiumContent"
-    case sugarContent = "sugarContent"
-    case transFatContent = "transFatContent"
-}
-
-enum Unit: String, Codable {
-    case empty = "%"
-    case g = "g"
-    case kcal = "kcal"
-    case mg = "mg"
-    case µg = "µg"
-}
-
 // MARK: - Ingredient
 struct Ingredient: Codable {
     let text: String?
@@ -123,15 +81,3 @@ struct Ingredient: Codable {
     }
 }
 
-enum MealType: String, Codable {
-    case breakfast = "breakfast"
-    case lunchDinner = "lunch/dinner"
-    case snack = "snack"
-}
-
-// MARK: - Total
-struct Total: Codable {
-    let label: String?
-    let quantity: Double?
-    let unit: Unit?
-}
