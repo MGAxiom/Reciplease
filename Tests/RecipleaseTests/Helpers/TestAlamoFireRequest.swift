@@ -9,14 +9,14 @@ import Alamofire
 
 public class TestAlamoFireRequest {
   
-        var request:String?
+        var request: String?
         struct response{
-            static var data:HTTPURLResponse?
-            static var json:AnyObject?
-            static var error:NSError?
+            static var data: HTTPURLResponse?
+            static var json: AnyObject?
+            static var error: NSError?
         }
         
-        init (request:String){
+        init (request: String){
             self.request = request
         }
         

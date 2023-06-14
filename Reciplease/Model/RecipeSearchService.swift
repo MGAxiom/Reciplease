@@ -19,17 +19,12 @@ class RecipeSearchService {
         
         
         AF.request(url, method: .get, parameters: parameters, encoding:  URLEncoding.default).validate().response { response in
-//            print(response.request)
-//            print(response.result)
 
             switch response.result {
             case .success(let data):
-//                print(response.result)
                 do {
                     let jsondata = try JSONDecoder().decode(RecipeSearchResult.self, from: data!)
-//                    handler(jsondata)
                     completionHandler(.success(jsondata))
-//                    print(jsondata)
                 } catch {
                     print(error)
                 }
@@ -46,5 +41,3 @@ class RecipeSearchService {
         }
     }
 }
-
-//extension Recipe: Recipes {}

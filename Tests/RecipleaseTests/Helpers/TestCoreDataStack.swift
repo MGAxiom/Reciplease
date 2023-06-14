@@ -7,27 +7,6 @@
 
 import CoreData
 import Reciplease
-
-//class TestCoreDataStack: CoreDataStack {
-//
-//    convenience init() {
-//        self.init(modelName: "Reciplease")
-//    }
-//
-//        lazy var persistentContainer: NSPersistentContainer = {
-//            let description = NSPersistentStoreDescription()
-//            description.url = URL(fileURLWithPath: "/dev/null")
-//            description.type = NSInMemoryStoreType
-//            let container = NSPersistentContainer(name: modelName)
-//            container.persistentStoreDescriptions = [description]
-//            container.loadPersistentStores { _, error in
-//                if let error = error as NSError? {
-//                    fatalError("Unresolved error \(error), \(error.userInfo)")
-//                }
-//            }
-//            return container
-//        }()
-//}
     
 final class TestCoreDataStack: CoreDataStack {
     

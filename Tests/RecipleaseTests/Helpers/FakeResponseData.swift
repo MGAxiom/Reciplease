@@ -24,7 +24,7 @@ class FakeResponseData {
     static var correctData: Data {
         let bundle = Bundle(for: FakeResponseData.self)
         guard let url = bundle.url(forResource: "RecipesSearch", withExtension: "json") else {
-            fatalError("Could not find RecipeSearch.json.")
+            fatalError("Could not find RecipesSearch.json.")
         }
         guard let data = try? Data(contentsOf: url) else { return Data() }
         return data
