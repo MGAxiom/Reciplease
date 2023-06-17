@@ -30,7 +30,7 @@ class FavouriteListVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        fetchRecipes()
+        fetchRecipes()
         self.favouriteListTV.reloadData()
     }
     

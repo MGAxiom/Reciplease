@@ -18,7 +18,6 @@ class RecipesListTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     func configure(imageURL: String, title: String, subtitle: String, calories: String, time: String) {
@@ -32,7 +31,6 @@ class RecipesListTableViewCell: UITableViewCell {
             UIColor(white: 0, alpha: 0.01).cgColor,
             UIColor.black.cgColor,
         ]
-//        let resizedImage =  cellImageView.image?.resizeUI(size: CGSize(width: 393, height: 155))
         cellImageView.layer.insertSublayer(gradient, at: 0)
         
         titleLabel.text = title
@@ -47,14 +45,3 @@ class RecipesListTableViewCell: UITableViewCell {
     
 
 }
-
-//extension UIImage {
-//    func resizeUI(size:CGSize) -> UIImage? {
-//        UIGraphicsBeginImageContextWithOptions(size, true, self.scale)
-//        self.draw(in: CGRect(origin: CGPointZero, size: size))
-//
-//        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-//        return resizedImage
-//    }
-//}

@@ -57,7 +57,6 @@ final class RecipeRepository {
             recipe.foods = foods
             do {
                 try coreDataStack.viewContext.save()
-//                print("Recipe has been saved.")
             } catch {
                 print("Error while trying to save recipe")
             }

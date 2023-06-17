@@ -9,7 +9,6 @@ import UIKit
 
 class RecipleaseMainVC: UIViewController {
     
-    let data = [""]
     var ingredientsList: [String] = []
     var apiResult: RecipeSearchResult?
     
@@ -24,10 +23,7 @@ class RecipleaseMainVC: UIViewController {
         
         self.ingredientListTableView.delegate = self
         self.ingredientListTableView.dataSource = self
-        ingredientsList = data
         ingredientsList.removeAll()
-        
-//        RecipeSearchService.shared.recipeAPI(userInput: "potato")
     }
     
     override func viewWillAppear(_ animated: Bool) {

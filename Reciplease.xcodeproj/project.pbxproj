@@ -34,6 +34,8 @@
 		89BC88BB2A24DAA700B83FA6 /* RecipesListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC88BA2A24DAA700B83FA6 /* RecipesListTableViewCell.swift */; };
 		89CA12902A39BEEA004085BF /* RecipeSearchServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CA128F2A39BEEA004085BF /* RecipeSearchServiceTests.swift */; };
 		89CA12922A39CE7C004085BF /* RecipeSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CA12912A39CE7C004085BF /* RecipeSessionFake.swift */; };
+		89CA12942A3B5DA1004085BF /* AFSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CA12932A3B5DA1004085BF /* AFSession.swift */; };
+		89CA12982A3DE430004085BF /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CA12972A3DE430004085BF /* ApiError.swift */; };
 		89D141492A2E3BFE0078BAF1 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D141482A2E3BFE0078BAF1 /* Recipe.swift */; };
 		89E71CCB2A2F74C100B39B07 /* RecipeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E71CCA2A2F74C100B39B07 /* RecipeRepository.swift */; };
 		89E71CCD2A2F990F00B39B07 /* FavouriteListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E71CCC2A2F990F00B39B07 /* FavouriteListTableViewCell.swift */; };
@@ -94,6 +96,8 @@
 		89BC88BA2A24DAA700B83FA6 /* RecipesListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListTableViewCell.swift; sourceTree = "<group>"; };
 		89CA128F2A39BEEA004085BF /* RecipeSearchServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchServiceTests.swift; sourceTree = "<group>"; };
 		89CA12912A39CE7C004085BF /* RecipeSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSessionFake.swift; sourceTree = "<group>"; };
+		89CA12932A3B5DA1004085BF /* AFSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFSession.swift; sourceTree = "<group>"; };
+		89CA12972A3DE430004085BF /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		89D141482A2E3BFE0078BAF1 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		89E71CCA2A2F74C100B39B07 /* RecipeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRepository.swift; sourceTree = "<group>"; };
 		89E71CCC2A2F990F00B39B07 /* FavouriteListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteListTableViewCell.swift; sourceTree = "<group>"; };
@@ -193,8 +197,8 @@
 				896135AB2A38D09E007957EA /* RecipleaseTestPlan.xctestplan */,
 				896135A52A38AF31007957EA /* Helpers */,
 				892677EB2A17B82F000E18D4 /* RecipleaseTests.swift */,
-				896135A32A38AF1D007957EA /* RecipesSearch.json */,
 				89CA128F2A39BEEA004085BF /* RecipeSearchServiceTests.swift */,
+				896135A32A38AF1D007957EA /* RecipesSearch.json */,
 			);
 			path = RecipleaseTests;
 			sourceTree = "<group>";
@@ -216,6 +220,7 @@
 				892677DD2A17B82E000E18D4 /* Assets.xcassets */,
 				892677E22A17B82E000E18D4 /* Info.plist */,
 				89E71CCE2A32068E00B39B07 /* Extensions.swift */,
+				89CA12972A3DE430004085BF /* ApiError.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 			children = (
 				89BC886B2A1E6DF700B83FA6 /* CoreData */,
 				89BC88672A1D00EC00B83FA6 /* RecipeSearchService.swift */,
+				89CA12932A3B5DA1004085BF /* AFSession.swift */,
 				89BC88692A1E20E200B83FA6 /* RecipeDecodable.swift */,
 				89D141482A2E3BFE0078BAF1 /* Recipe.swift */,
 				89E71CCA2A2F74C100B39B07 /* RecipeRepository.swift */,
@@ -530,11 +536,13 @@
 				89BC88B72A1E7ADE00B83FA6 /* FavouriteListVC.swift in Sources */,
 				89E71CCB2A2F74C100B39B07 /* RecipeRepository.swift in Sources */,
 				89BC88BB2A24DAA700B83FA6 /* RecipesListTableViewCell.swift in Sources */,
+				89CA12982A3DE430004085BF /* ApiError.swift in Sources */,
 				89BC88B12A1E7A6B00B83FA6 /* RecipleaseMainVC.swift in Sources */,
 				89BC886E2A1E6E1A00B83FA6 /* Reciplease.xcdatamodeld in Sources */,
 				89BC886A2A1E20E200B83FA6 /* RecipeDecodable.swift in Sources */,
 				89E71CCD2A2F990F00B39B07 /* FavouriteListTableViewCell.swift in Sources */,
 				89BC88B92A1E7AEB00B83FA6 /* FavouriteDetailVC.swift in Sources */,
+				89CA12942A3B5DA1004085BF /* AFSession.swift in Sources */,
 				89BC88B52A1E7AB600B83FA6 /* RecipleaseDetailVC.swift in Sources */,
 				89E71CCF2A32068E00B39B07 /* Extensions.swift in Sources */,
 				892677D52A17B82E000E18D4 /* AppDelegate.swift in Sources */,
