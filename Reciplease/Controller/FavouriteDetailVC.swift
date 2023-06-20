@@ -6,16 +6,21 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class FavouriteDetailVC: UIViewController {
     
     var data: Recipe?
+    private let repository = RecipeRepository()
     
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var recipeTitle: UILabel!
     @IBOutlet weak var caloriesLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var ingredientsForRecipeTV: UITableView!
+    @IBOutlet weak var favoriteButtonItem: UIBarButtonItem!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +35,13 @@ class FavouriteDetailVC: UIViewController {
     }
     
     @IBAction func favouriteButton(_ sender: UIButton) {
+        if repository.checkIfItemExist(id: recipeTitle.text!) == true {
+        presentAlertVC(with: "This recipe is already in your favourites. Do you want to remove it?", recipeName: recipeTitle.text!)
+        checkNavIcon()
+    } else {
+//        CoreDataStack.sharedInstance.viewContext.undo()
+        checkNavIcon()
+    }
     }
     
     func transferDetails() {
@@ -51,7 +63,21 @@ class FavouriteDetailVC: UIViewController {
         caloriesLabel.text = data?.calories
         timeLabel.text = data?.time
     }
+    
+    private func addRecipe() {
+        repository.saveRecipe(title: (data?.title)!, calories: data!.calories!, time: (data?.time)!, imageUrl: (data?.imageUrl)!, ingredients: (data?.ingredients)!, url: (data?.url)!, foods: (data?.foods)!)
+    }
+    
+    func checkNavIcon() {
+        if repository.checkIfItemExist(id: recipeTitle.text!) == true {
+            favoriteButtonItem.image = Image(systemName: "star.fill")
+        } else {
+            favoriteButtonItem.image = Image(systemName: "star")
+        }
+    }
 }
+
+
 extension FavouriteDetailVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let string = data?.ingredients ?? ""
@@ -68,5 +94,27 @@ extension FavouriteDetailVC: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.font = UIFont(name: "Noteworthy Bold", size: 15)
         cell.textLabel?.textColor = #colorLiteral(red: 0.9546958804, green: 0.9447646141, blue: 0.8713437915, alpha: 1)
         return cell
+    }
+}
+
+extension FavouriteDetailVC {
+
+    func presentAlertVC(with message: String, recipeName: String, okCompletion: @escaping (() -> ()) = {}, cancelCompletion: @escaping (() -> ()) = {}, presentCompletion: @escaping (() -> ()) = {}) {
+        let alertController = UIAlertController(title: "Ooops !", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action: UIAlertAction) in
+            RecipeRepository().deleteRecipe(id: recipeName)
+            self.checkNavIcon()
+            okCompletion()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (cancel: UIAlertAction) in
+            cancelCompletion()
+        }
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true) {
+                presentCompletion()
+            }
+        }
     }
 }

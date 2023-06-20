@@ -38,29 +38,10 @@ class RecipeSessionFake: AFSession {
             }
             
         }
-        
-        
-        
-//        if fakeResponse.error != nil {
-//            result = .failure(fakeResponse.error!)
-//        } else {
-//            do {
-//                let json = try JSONResponseSerializer().serialize(request: urlRequest, response: httpResponse, data: data, error: nil)
-//                print(json)
-//                result = .success(json as? Data)
-//            } catch {
-//                result = .failure(AFError.responseSerializationFailed(reason: .jsonSerializationFailed(error: error)))
-//            }
-//        }
-            
-        // let result = try? JSONResponseSerializer().serialize(request: urlRequest, response: httpResponse, data: data, error: fakeResponse.error)
-//        let result:Result<Data?, AFError>
-//        do {
-//            let decoded = try DecodableResponseSerializer<Data?>().serialize(request: urlRequest, response: httpResponse, data: data, error: nil)
-//            result = Result<Data?, AFError>.success(decoded)
-//        } catch {
-//            result = Result<Data?, AFError>.failure(AFError.explicitlyCancelled)
-//        }
         callback(AFDataResponse(request: urlRequest, response: httpResponse, data: data, metrics: .none, serializationDuration: .zero, result: result))
+    }
+    
+    func imageRequest() {
+        
     }
 }

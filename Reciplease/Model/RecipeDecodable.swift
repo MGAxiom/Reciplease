@@ -11,9 +11,18 @@ import Foundation
 struct RecipeSearchResult: Codable {
     let q: String
     let hits: [Hit]
+    var recipes: [RecipeDecodable] {
+        get {
+            var res: [RecipeDecodable] = []
+            for hit in hits {
+                res.append(hit.recipe)
+            }
+            return res
+        }
+    }
     let count: Int
 }
-
+    
 // MARK: - Hit
 struct Hit: Codable {
     let recipe: RecipeDecodable

@@ -47,11 +47,6 @@ final class RecipleaseTests: XCTestCase {
         XCTAssertTrue(coreDataRepository.getRecipeDetails(id: "Infused butter")?.url == "http://www.eating.com/recipes/infused-butter-recipe.html")
     }
     
-//    func testAddIncorrectRecipeMethods_WhenAnEntityIsCreated_ThenShouldBeCorrectlySaved() {
-//        coreDataRepository.saveRecipe(title: "Infused butter", calories: "1004", time: "1h 30min", imageUrl: "https://www.edamam.com/web-img/recipeimage.jpg", ingredients: "butter", url: "http://www.eating.com/recipes/infused-butter-recipe.html", foods: "butter")
-//        XCTAssertTrue(coreDataRepository.checkIfItemExist(id: "Infused butter") == false)
-//        XCTAssertThrowsError(print("Error while trying to save recipe"))
-//    }
     
     func testFavouriteRecipesAreSaved_WhenAnEntityIsDeleted_ThenShouldBeCorrectlyDeleted() {
         coreDataRepository.saveRecipe(title: "Infused butter", calories: "1000", time: "1h 30min", imageUrl: "https://www.edamam.com/web-img/recipeimage.jpg", ingredients: "butter", url: "http://www.eating.com/recipes/infused-butter-recipe.html", foods: "butter")

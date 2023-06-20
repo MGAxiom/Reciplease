@@ -13,32 +13,20 @@ class RecipleaseListVC: UIViewController {
     @IBOutlet weak var recipeListTV: UITableView!
     
     var data: RecipeSearchResult?
-    var recipess: [RecipeDecodable] = []
+    var recipes: [RecipeDecodable] = []
     var detailsToSend: RecipeDecodable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         recipeListTV.reloadData()
-        var recipes: [RecipeDecodable] {
-            get {
-                var res: [RecipeDecodable] = []
-                guard let recipeData = data else {
-                    return res
-                }
-                for hit in recipeData.hits {
-                    res.append(hit.recipe)
-                }
-                return res
-            }
-        }
-        recipess = recipes
+        recipes = data!.recipes
     }
 }
 // MARK: - TableView Extension
 
 extension RecipleaseListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipess.count
+        return recipes.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -50,7 +38,7 @@ extension RecipleaseListVC: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as? RecipesListTableViewCell else {
             return UITableViewCell()
         }
-        let recipe = recipess[indexPath.row]
+        let recipe = recipes[indexPath.row]
         let ingredientLinesString = recipe.decodedIngredientLines.joined(separator: ", ")
         
         cell.configure(imageURL: recipe.image! ,title: recipe.label!, subtitle: ingredientLinesString.capitalized, calories: recipe.roundedCalories, time: recipe.decodedTime)
@@ -58,7 +46,7 @@ extension RecipleaseListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        detailsToSend = recipess[indexPath.row]
+        detailsToSend = recipes[indexPath.row]
         self.performSegue(withIdentifier: "showRecipeDetails", sender: self)
     }
     

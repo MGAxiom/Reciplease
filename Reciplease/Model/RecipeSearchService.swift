@@ -44,10 +44,4 @@ class RecipeSearchService {
             }
         }
     }
-    
-    func fetchRecipeImage(imageUrl: String) {
-        AF.request(imageUrl, method: .get).responseImage { response in
-            
-        }
-    }
 }

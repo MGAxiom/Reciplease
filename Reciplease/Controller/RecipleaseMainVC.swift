@@ -24,12 +24,27 @@ class RecipleaseMainVC: UIViewController {
         self.ingredientListTableView.delegate = self
         self.ingredientListTableView.dataSource = self
         ingredientsList.removeAll()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.searchButton.isHidden = false
         self.activityWheel.isHidden = true
+        self.ingredientTextfield.attributedPlaceholder = NSAttributedString (
+            string: "Tomato,Sausage, Basil...",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
+        )
+    }
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     @IBAction func addIngredientButton(_ sender: UIButton) {

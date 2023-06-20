@@ -16,8 +16,8 @@ class FakeResponseData {
     
     // MARK: - Error
     
-    class NetworkError: Error {}
-    static let networkError = NetworkError()
+//    class NetworkError: Error {}
+//    static let networkError = NetworkError()
     
     // MARK: - Data
     

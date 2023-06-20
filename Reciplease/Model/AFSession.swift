@@ -16,7 +16,6 @@ final class SearchSession: AFSession {
     
     var parameters: [String] = [""]
     
-    //func request(with url: String, callback: @escaping (AFDataResponse<Data?>) -> Void) {
     func request(with url: String, method: HTTPMethod, parameters: Parameters?, encoding: ParameterEncoding, callback: @escaping (AFDataResponse<Data?>) -> Void) {
         AF.request(url, method: .get, parameters: parameters, encoding:  URLEncoding.default).validate().response { response in
             callback(response)

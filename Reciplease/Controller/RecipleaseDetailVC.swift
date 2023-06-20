@@ -42,7 +42,7 @@ class RecipleaseDetailVC: UIViewController {
     @IBAction func favoriteButton(_ sender: Any) {
         if repository.checkIfItemExist(id: titleRecipe.text!) == true {
             presentAlertVC(with: "This recipe is already in your favourites. Do you want to remove it?", recipeName: titleRecipe.text!)
-            checkNavIcon()
+//            checkNavIcon()
         } else {
             addRecipe()
             checkNavIcon()
@@ -82,18 +82,6 @@ class RecipleaseDetailVC: UIViewController {
             favoriteButton.image = Image(systemName: "star")
         }
     }
-    
-    func presentAlertVC(with messsage: String, recipeName: String) {
-        let alert = UIAlertController(title: "Oops !", message: messsage, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "No", style: .default))
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { [self] action in
-            RecipeRepository().deleteRecipe(id: recipeName)
-            checkNavIcon()
-        }))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    
 }
 
 extension RecipleaseDetailVC: UITableViewDelegate, UITableViewDataSource {
@@ -110,3 +98,26 @@ extension RecipleaseDetailVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 }
+
+extension RecipleaseDetailVC {
+
+    func presentAlertVC(with message: String, recipeName: String, okCompletion: @escaping (() -> ()) = {}, cancelCompletion: @escaping (() -> ()) = {}, presentCompletion: @escaping (() -> ()) = {}) {
+        let alertController = UIAlertController(title: "Ooops !", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action: UIAlertAction) in
+            RecipeRepository().deleteRecipe(id: recipeName)
+            self.checkNavIcon()
+            okCompletion()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (cancel: UIAlertAction) in
+            cancelCompletion()
+        }
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true) {
+                presentCompletion()
+            }
+        }
+    }
+}
+
