@@ -42,7 +42,6 @@ class RecipleaseDetailVC: UIViewController {
     @IBAction func favoriteButton(_ sender: Any) {
         if repository.checkIfItemExist(id: titleRecipe.text!) == true {
             presentAlertVC(with: "This recipe is already in your favourites. Do you want to remove it?", recipeName: titleRecipe.text!)
-//            checkNavIcon()
         } else {
             addRecipe()
             checkNavIcon()

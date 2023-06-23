@@ -39,7 +39,6 @@ class FavouriteDetailVC: UIViewController {
         presentAlertVC(with: "This recipe is already in your favourites. Do you want to remove it?", recipeName: recipeTitle.text!)
         checkNavIcon()
     } else {
-//        CoreDataStack.sharedInstance.viewContext.undo()
         checkNavIcon()
     }
     }

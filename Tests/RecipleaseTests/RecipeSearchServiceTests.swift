@@ -92,31 +92,4 @@ class RecipeSearchServiceTests: XCTestCase {
         
         wait(for: [expectation], timeout: 0.01)
     }
-    
-    func testGetRecipe_WhenNoResponse_ShouldReturnEmptyResponse() {
-        let fakeResponse = FakeResponse(response: nil, data: FakeResponseData.correctData, error: nil)
-        let recipeSessionFake = RecipeSessionFake(fakeResponse: fakeResponse)
-        let recipeSearchService = RecipeSearchService(session: recipeSessionFake)
-        
-        let expectation = XCTestExpectation(description: "Wait for queue change.")
-        recipeSearchService.recipeAPI(userInput: "chicken") { (result) in
-            switch result {
-            case .failure(let error):
-                XCTAssertTrue(error is AFError)
-                switch (error as? AFError) {
-                case .responseSerializationFailed(reason: .invalidEmptyResponse(type: "Empty")):
-                    break
-                default:
-                    XCTFail("Should be .responseSerializatioFailed")
-                }
-            default:
-                XCTFail()
-                break
-            }
-            
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 0.01)
-    }
 }

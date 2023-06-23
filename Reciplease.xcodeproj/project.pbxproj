@@ -198,7 +198,6 @@
 				896135A52A38AF31007957EA /* Helpers */,
 				892677EB2A17B82F000E18D4 /* RecipleaseTests.swift */,
 				89CA128F2A39BEEA004085BF /* RecipeSearchServiceTests.swift */,
-				896135A32A38AF1D007957EA /* RecipesSearch.json */,
 			);
 			path = RecipleaseTests;
 			sourceTree = "<group>";
@@ -278,6 +277,7 @@
 				896135A82A38B315007957EA /* FakeResponse.swift */,
 				896135A62A38B2AA007957EA /* FakeResponseData.swift */,
 				89CA12912A39CE7C004085BF /* RecipeSessionFake.swift */,
+				896135A32A38AF1D007957EA /* RecipesSearch.json */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";

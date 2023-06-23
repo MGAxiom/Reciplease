@@ -18,7 +18,6 @@ class FavouriteListTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     func configure(imageURL: String, title: String, subtitle: String, calories: String, time: String) {

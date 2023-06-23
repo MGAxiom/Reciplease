@@ -25,10 +25,6 @@ class RecipleaseMainVC: UIViewController {
         self.ingredientListTableView.dataSource = self
         ingredientsList.removeAll()
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
-        
         view.addGestureRecognizer(tap)
     }
     
