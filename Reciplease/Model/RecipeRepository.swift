@@ -46,45 +46,39 @@ final class RecipeRepository {
         }
     }
         
-    func saveRecipe(title: String, calories: String, time: String, imageUrl: String, ingredients: String, url: String, foods: String) {
-            let recipe = Recipe(context: coreDataStack.viewContext)
-            recipe.title = title
-            recipe.calories = calories
-            recipe.time = time
-            recipe.imageUrl = imageUrl
-            recipe.ingredients = ingredients
-            recipe.url = url
-            recipe.foods = foods
-            do {
-                try coreDataStack.viewContext.save()
-            } catch {
-                print("Error while trying to save recipe")
-            }
-        }
-        
-        func checkIfItemExist(id: String) -> Bool {
-            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Recipe")
-            fetchRequest.fetchLimit = 1
-            fetchRequest.predicate = NSPredicate(format: "title == %@", id)
-            do {
-                let count = try coreDataStack.viewContext.count(for: fetchRequest)
-                if count > 0 {
-                    return true
-                } else {
-                    return false
-                }
-            } catch let error as NSError {
-                print("Could not fetch. \(error), \(error.userInfo)")
-                return false
-            }
-        }
-        
-        func deleteRecipe(id: String) {
-            let fetchRequest: NSFetchRequest<Recipe> = Recipe.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "title == %@", id)
-            let object = try! coreDataStack.viewContext.fetch(fetchRequest)
-            for obj in object {
-                coreDataStack.viewContext.delete(obj)
-            }
+    func saveRecipe(recipe: Recipe) {
+        // Insert the Recipe object into the CoreData context (had no context until now)
+        coreDataStack.viewContext.insert(recipe)
+        do {
+            try coreDataStack.viewContext.save()
+        } catch {
+            print("Error while trying to save recipe")
         }
     }
+    
+    func checkIfItemExist(id: String) -> Bool {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Recipe")
+        fetchRequest.fetchLimit = 1
+        fetchRequest.predicate = NSPredicate(format: "title == %@", id)
+        do {
+            let count = try coreDataStack.viewContext.count(for: fetchRequest)
+            if count > 0 {
+                return true
+            } else {
+                return false
+            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+            return false
+        }
+    }
+    
+    func deleteRecipe(id: String) {
+        let fetchRequest: NSFetchRequest<Recipe> = Recipe.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "title == %@", id)
+        let object = try! coreDataStack.viewContext.fetch(fetchRequest)
+        for obj in object {
+            coreDataStack.viewContext.delete(obj)
+        }
+    }
+}

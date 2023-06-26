@@ -8,6 +8,7 @@
 import UIKit
 import AlamofireImage
 
+
 class RecipesListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cellImageView: UIImageView!
@@ -31,6 +32,9 @@ class RecipesListTableViewCell: UITableViewCell {
             UIColor(white: 0, alpha: 0.01).cgColor,
             UIColor.black.cgColor,
         ]
+        if cellImageView.layer.sublayers?.count ?? 0 >= 1 {
+            cellImageView.layer.sublayers?.removeFirst()
+        }
         cellImageView.layer.insertSublayer(gradient, at: 0)
         
         titleLabel.text = title

@@ -110,7 +110,7 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" red="0.24313727020000001" green="0.25098040700000002" blue="0.34901961679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="favouriteRecipeCell" rowHeight="155" id="3Be-4c-uqO" customClass="FavouriteListTableViewCell" customModule="Reciplease" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recipeCell" rowHeight="155" id="3Be-4c-uqO" customClass="RecipesListTableViewCell" customModule="Reciplease" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="155"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Be-4c-uqO" id="8lk-C4-Yad">
@@ -203,11 +203,11 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.24313727020000001" green="0.25098040700000002" blue="0.34901961679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
-                                            <outlet property="caloriesLabel" destination="xoM-9D-NNQ" id="CoC-an-DCz"/>
-                                            <outlet property="cellImageView" destination="DF8-p8-zWb" id="zJm-s6-3SQ"/>
-                                            <outlet property="descriptionLabel" destination="3nW-W6-kr6" id="xNv-7M-NMT"/>
-                                            <outlet property="timeLabel" destination="v8I-X1-Tdw" id="TWc-YZ-V85"/>
-                                            <outlet property="titleLabel" destination="hLX-pH-T9W" id="3tT-Xv-iRI"/>
+                                            <outlet property="caloriesLabel" destination="xoM-9D-NNQ" id="2m6-5d-0aj"/>
+                                            <outlet property="cellImageView" destination="DF8-p8-zWb" id="Anu-G9-nGK"/>
+                                            <outlet property="descriptionLabel" destination="3nW-W6-kr6" id="y48-zt-2Bc"/>
+                                            <outlet property="timeLabel" destination="v8I-X1-Tdw" id="4Qn-zH-J6I"/>
+                                            <outlet property="titleLabel" destination="hLX-pH-T9W" id="9yI-df-Gs0"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -391,7 +391,7 @@
                         <outlet property="ingredientsForRecipeTV" destination="KCh-QU-Stb" id="buZ-5M-lZM"/>
                         <outlet property="recipeImage" destination="Ckl-X1-zSB" id="wI6-aY-su3"/>
                         <outlet property="recipeTitle" destination="4iH-wd-hbC" id="cyJ-1Z-haI"/>
-                        <outlet property="timeLabel" destination="mKV-om-x2c" id="clK-tF-N6f"/>
+                        <outlet property="timeLabel" destination="mKV-om-x2c" id="0Ky-Xo-Vlj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjJ-LA-6eo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -651,7 +651,7 @@
                                             <outlet property="caloriesLabel" destination="Cd2-oY-mRW" id="by3-Pa-7Ov"/>
                                             <outlet property="cellImageView" destination="X1w-OI-6el" id="w0p-1S-Ef2"/>
                                             <outlet property="descriptionLabel" destination="Fsx-s1-9q4" id="ZWi-uo-ugf"/>
-                                            <outlet property="timeLabel" destination="PsO-Zc-XQi" id="WzA-GV-2WC"/>
+                                            <outlet property="timeLabel" destination="PsO-Zc-XQi" id="Bo0-pG-hc2"/>
                                             <outlet property="titleLabel" destination="s86-tS-8uZ" id="M9S-0h-Pfz"/>
                                         </connections>
                                     </tableViewCell>

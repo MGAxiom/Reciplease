@@ -10,7 +10,7 @@ import UIKit
 class RecipleaseMainVC: UIViewController {
     
     var ingredientsList: [String] = []
-    var apiResult: RecipeSearchResult?
+    var apiResult: [Recipe] = []
     
     @IBOutlet weak var ingredientTextfield: UITextField!
     @IBOutlet weak var ingredientListTableView: UITableView!

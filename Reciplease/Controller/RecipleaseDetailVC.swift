@@ -10,9 +10,17 @@ import AlamofireImage
 
 class RecipleaseDetailVC: UIViewController {
     
-    var data: RecipeDecodable?
+    var data: Recipe?
     private let repository = RecipeRepository()
     let database = Recipe?.self
+    var ingredientArray: [String] {
+        get {
+            if let recipeData = data, let ingredientsData: String = recipeData.ingredients {
+                return ingredientsData.components(separatedBy: ", ")
+            }
+            return []
+        }
+    }
     
     @IBOutlet weak var recipePlaceholder: UIImageView!
     @IBOutlet weak var titleRecipe: UILabel!
@@ -49,7 +57,7 @@ class RecipleaseDetailVC: UIViewController {
     }
     
     func transferDetails() {
-        let url = URL(string: (data?.image)!)!
+        let url = URL(string: data?.imageUrl ?? "")!
         
         recipePlaceholder.af.setImage(withURL: url)
         let gradient = CAGradientLayer()
@@ -63,15 +71,18 @@ class RecipleaseDetailVC: UIViewController {
         recipePlaceholder.layer.insertSublayer(gradient, at: 1)
         
         
-        titleRecipe.text = data?.label
-        caloriesLabel.text = data?.roundedCalories
-        timeLabel.text = data?.decodedTime
+        titleRecipe.text = data?.title
+        caloriesLabel.text = data?.calories
+        timeLabel.text = data?.time
     }
     
     private func addRecipe() {
-        let ingredientLinesString = (data?.ingredientLines!.joined(separator: ", "))!
-        let foodLineString = (data?.decodedIngredientLines.joined(separator: ", "))!
-        repository.saveRecipe(title: (data?.label)!, calories: data!.roundedCalories, time: data!.decodedTime, imageUrl: (data?.image)!, ingredients: ingredientLinesString, url: (data?.url)!, foods: foodLineString)
+//        let ingredientLinesString = (data?.ingredientLines!.joined(separator: ", "))!
+//        let foodLineString = (data?.decodedIngredientLines.joined(separator: ", "))!
+        guard data != nil else {
+                return
+        }
+        repository.saveRecipe(recipe: data!)
     }
     
     func checkNavIcon() {
@@ -85,13 +96,14 @@ class RecipleaseDetailVC: UIViewController {
 
 extension RecipleaseDetailVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (data?.ingredientLines!.count)!
+        return ingredientArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeIngredientsCell", for: indexPath)
+        
         cell.textLabel?.numberOfLines = 5
-        cell.textLabel?.text = " - \(data?.ingredientLines?[indexPath.row].capitalized ?? "")"
+        cell.textLabel?.text = " - \(ingredientArray[indexPath.row].capitalized)"
         cell.textLabel?.font = UIFont(name: "Noteworthy Bold", size: 15)
         cell.textLabel?.textColor = #colorLiteral(red: 0.9546958804, green: 0.9447646141, blue: 0.8713437915, alpha: 1)
         return cell

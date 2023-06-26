@@ -64,7 +64,10 @@ class FavouriteDetailVC: UIViewController {
     }
     
     private func addRecipe() {
-        repository.saveRecipe(title: (data?.title)!, calories: data!.calories!, time: (data?.time)!, imageUrl: (data?.imageUrl)!, ingredients: (data?.ingredients)!, url: (data?.url)!, foods: (data?.foods)!)
+        guard data != nil else {
+                return
+        }
+        repository.saveRecipe(recipe: data!)
     }
     
     func checkNavIcon() {

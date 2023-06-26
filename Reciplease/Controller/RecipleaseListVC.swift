@@ -12,21 +12,21 @@ class RecipleaseListVC: UIViewController {
     
     @IBOutlet weak var recipeListTV: UITableView!
     
-    var data: RecipeSearchResult?
-    var recipes: [RecipeDecodable] = []
-    var detailsToSend: RecipeDecodable?
+    var data: [Recipe] = []
+//    var recipes: [RecipeDecodable] = []
+    var detailsToSend: Recipe?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         recipeListTV.reloadData()
-        recipes = data!.recipes
+//        recipes = data.recipes
     }
 }
 // MARK: - TableView Extension
 
 extension RecipleaseListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipes.count
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -38,15 +38,15 @@ extension RecipleaseListVC: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as? RecipesListTableViewCell else {
             return UITableViewCell()
         }
-        let recipe = recipes[indexPath.row]
-        let ingredientLinesString = recipe.decodedIngredientLines.joined(separator: ", ")
+        let recipe = data[indexPath.row]
+//        let ingredientLinesString = recipe.decodedIngredientLines.joined(separator: ", ")
         
-        cell.configure(imageURL: recipe.image! ,title: recipe.label!, subtitle: ingredientLinesString.capitalized, calories: recipe.roundedCalories, time: recipe.decodedTime)
+        cell.configure(imageURL: recipe.imageUrl ?? "" ,title: recipe.title ?? "", subtitle: recipe.ingredients?.capitalized ?? "", calories: recipe.calories ?? "0", time: recipe.time ?? "")
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        detailsToSend = recipes[indexPath.row]
+        detailsToSend = data[indexPath.row]
         self.performSegue(withIdentifier: "showRecipeDetails", sender: self)
     }
     
